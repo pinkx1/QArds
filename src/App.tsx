@@ -22,7 +22,6 @@ export function App() {
     saved ? JSON.parse(saved) : defaultState
   )
 
-  // сохраняем в localStorage при изменении состояния
   useEffect(() => {
     localStorage.setItem('qards-state', JSON.stringify(appState))
   }, [appState])

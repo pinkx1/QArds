@@ -100,33 +100,6 @@ export function Home({ appState, setAppState }: HomeProps) {
           />
 
 
-          <div className="navigation">
-            <button
-              onClick={() => handleNavigation('prev')}
-              disabled={filteredCards.length <= 1}
-              className="nav-btn"
-            >
-              <ChevronLeftIcon className="icon" />
-              <span>{t(language, 'prev')}</span>
-            </button>
-
-            <span className="progress-count">
-              {t(language, 'progress', {
-                current: currentCardIndex + 1,
-                total: filteredCards.length
-              })}
-            </span>
-
-            <button
-              onClick={() => handleNavigation('next')}
-              disabled={filteredCards.length <= 1}
-              className="nav-btn"
-            >
-              <span>{t(language, 'next')}</span>
-              <ChevronRightIcon className="icon" />
-            </button>
-          </div>
-
           {currentCard && (
             <Flashcard
               card={currentCard}

@@ -15,6 +15,18 @@
 	border-bottom: 1px solid #e5e7eb;
 }
 
+.home-header .container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+}
+
+.app-logo {
+	height: 60px;
+	object-fit: contain;
+}
+
 .app-title {
 	text-align: center;
 	font-size: 1.5rem;
@@ -30,28 +42,6 @@
 	align-items: center;
 }
 
-.category-select select {
-	padding: 0.5rem;
-	font-size: 0.875rem;
-	border-radius: 8px;
-	border: 1px solid #d1d5db;
-}
-
-.shuffle-btn {
-	padding: 0.5rem 1rem;
-	font-size: 0.875rem;
-	border-radius: 8px;
-	background-color: #f3f4f6;
-	border: 1px solid #d1d5db;
-	cursor: pointer;
-}
-
-.shuffle-btn.active {
-	background-color: #dbeafe;
-	color: #1d4ed8;
-	border-color: #bfdbfe;
-}
-
 .home-main {
 	flex: 1;
 	padding: 1rem;
@@ -64,17 +54,6 @@
 	margin-bottom: 1.5rem;
 }
 
-.nav-btn {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-	font-size: 0.875rem;
-	color: #4b5563;
-	background: none;
-	border: none;
-	cursor: pointer;
-}
-
 .progress-count {
 	font-size: 0.875rem;
 	color: #6b7280;
@@ -85,7 +64,31 @@
 	height: 20px;
 }
 
-.app-logo {
-	height: 60px;
-	object-fit: contain;
+/* Статусные кнопки под карточкой */
+.action-btn {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	border: none;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.action-btn:hover {
+	transform: scale(1.05);
+}
+
+.action-btn.red {
+	background: #fee2e2;
+	color: #b91c1c;
+}
+
+.action-btn.green {
+	background: #d1fae5;
+	color: #065f46;
 }

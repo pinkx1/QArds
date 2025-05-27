@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from '../types'
 import { Link } from 'react-router-dom'
-import { ListIcon, ShuffleIcon } from 'lucide-react'
+import { ListIcon, ShuffleIcon, FilterIcon } from 'lucide-react'
 import { t } from '../i18n'
 import './ProgressCounter.css'
 
@@ -46,30 +46,32 @@ export function ProgressCounter({
       </div>
 
       <div className="progress-actions">
-        <div className="category-select">
-          <select
-            value={selectedCategory}
-            onChange={e => onCategoryChange(e.target.value)}
-          >
-            {categories.map(category => (
-              <option key={category} value={category}>
-                {category === 'all' ? t(language, 'allCategories') : category}
-              </option>
-            ))}
-          </select>
-        </div>
-
         <button
           onClick={onShuffleToggle}
-          className={`shuffle-btn ${shuffleMode ? 'active' : ''}`}
+          className={`shuffle-btn button-like ${shuffleMode ? 'active' : ''}`}
         >
           <ShuffleIcon className="icon" />
           {t(language, 'shuffleMode')}
         </button>
+<div className="category-select">
+  <FilterIcon className="select-icon" />
+  <select
+    value={selectedCategory}
+    onChange={e => onCategoryChange(e.target.value)}
+    className="category-dropdown"
+  >
+    {categories.map(category => (
+      <option key={category} value={category}>
+        {category === 'all' ? t(language, 'allCategories') : category}
+      </option>
+    ))}
+  </select>
+</div>
+
 
         <Link
           to="/cards"
-          className="view-all-link"
+          className="view-all-link button-like"
           title={t(language, 'allCards')}
         >
           <ListIcon className="icon" />

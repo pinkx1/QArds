@@ -13,7 +13,6 @@
 	gap: 1rem;
 }
 
-
 .progress-section {
 	display: flex;
 	gap: 2rem;
@@ -50,26 +49,33 @@
 	display: flex;
 	align-items: center;
 	gap: 10px;
+	flex-wrap: wrap;
 }
 
-/* Стили для кнопки перемешивания */
-.shuffle-btn {
-	display: flex;
+/* Кнопки (shuffle и view-all) */
+.button-like {
+	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
 	padding: 0.5rem 1rem;
 	font-size: 0.875rem;
-	border: 1px solid #e5e7eb;
+	font-weight: 500;
 	border-radius: 8px;
+	border: 1px solid #e5e7eb;
 	background-color: #fff;
-	color: #4b5563;
+	color: #374151;
 	cursor: pointer;
-	transition: background 0.2s, color 0.2s;
+	transition: all 0.2s ease;
 }
 
-.shuffle-btn:hover {
+.button-like:hover {
 	background-color: #f3f4f6;
 	color: #111827;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.button-like:active {
+	background-color: #e5e7eb;
 }
 
 .shuffle-btn.active {
@@ -78,43 +84,87 @@
 	color: #1e3a8a;
 }
 
-/* Стили для селекта */
-.category-select select {
-	padding: 0.5rem 1rem;
-	font-size: 0.875rem;
-	border: 1px solid #e5e7eb;
-	border-radius: 8px;
-	background-color: #fff;
-	color: #4b5563;
-	cursor: pointer;
-	transition: background 0.2s, color 0.2s;
-}
-
-.category-select select:hover {
-	background-color: #f3f4f6;
-	color: #111827;
-}
-
-.view-all-link {
+/* Категория (select + иконка внутри) */
+.category-select {
+	position: relative;
 	display: flex;
 	align-items: center;
-	gap: 0.5rem;
-	color: #4b5563;
-	font-size: 0.875rem;
-	text-decoration: none;
-	transition: color 0.2s, background 0.2s;
-	padding: 0.5rem 1rem;
-	border-radius: 8px;
-	border: 1px solid #e5e7eb;
-	background-color: #fff;
+	width: auto;
 }
 
-.view-all-link:hover {
-	color: #111827;
-	background: #f3f4f6;
+.select-icon {
+	position: absolute;
+	left: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+	color: #6b7280;
+	width: 16px;
+	height: 16px;
+}
+
+.category-dropdown {
+	padding: 0.5rem 1rem 0.5rem 2.25rem;
+	font-size: 0.875rem;
+	font-weight: 500;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	background-color: #fff;
+	color: #374151;
+	cursor: pointer;
+	transition: background 0.2s, border-color 0.2s;
+	height: 40px;
+	appearance: none;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.category-dropdown:hover {
+	background-color: #f9fafb;
+	border-color: #d1d5db;
+}
+
+.category-dropdown:focus {
+	outline: none;
+	border-color: #60a5fa;
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* View All link */
+.view-all-link {
+	text-decoration: none;
 }
 
 .icon {
 	width: 20px;
 	height: 20px;
+}
+
+/* ==================== */
+/* 📱 АДАПТАЦИЯ ПОД МОБИЛКИ */
+/* ==================== */
+@media (max-width: 640px) {
+	.progress {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.progress-section {
+		justify-content: center;
+		flex-wrap: wrap;
+		width: 100%;
+		text-align: center;
+	}
+
+	.progress-actions {
+		flex-direction: column;
+		align-items: stretch;
+		width: 100%;
+	}
+
+	.progress-actions>*,
+	.category-select,
+	.category-dropdown {
+		width: 100%;
+	}
 }
