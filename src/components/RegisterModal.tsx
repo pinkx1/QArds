@@ -14,14 +14,35 @@ export function RegisterModal({ isOpen, onClose, language }: RegisterModalProps)
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
+  const API = import.meta.env.VITE_API_BASE_URL
+
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
+
     if (password !== confirmPassword) {
       alert(t(language, 'passwordsDontMatch'))
       return
     }
-    // TODO: отправка данных на /api/register
-    onClose()
+
+    try {
+      const res = await fetch(`${API}/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        alert(data.message || 'Registration failed')
+        return
+      }
+
+      localStorage.setItem('token', data.token)
+      onClose()
+    } catch (err) {
+      alert('Something went wrong. Please try again.')
+    }
   }
 
   return (

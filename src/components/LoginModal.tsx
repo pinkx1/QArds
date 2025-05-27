@@ -14,10 +14,29 @@ export function LoginModal({ isOpen, onClose, language, setRegisterOpen }: Login
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const API = import.meta.env.VITE_API_BASE_URL
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    // тут будет fetch-запрос позже
-    onClose()
+    try {
+      const res = await fetch(`${API}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        alert(data.message || 'Login failed')
+        return
+      }
+
+      localStorage.setItem('token', data.token)
+      onClose()
+    } catch (err) {
+      alert('Something went wrong. Please try again.')
+    }
   }
 
   return (
