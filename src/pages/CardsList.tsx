@@ -51,8 +51,10 @@ export function CardsList({ appState }: CardsListProps) {
     <div className="cards-page">
       <header className="cards-header">
         <div className="cards-header-inner">
+  <Link to="/" className="logo-link">
   <img src={logoLight} alt="QArds logo" className="app-logo logo-light" />
   <img src={logoDark} alt="QArds logo" className="app-logo logo-dark" />
+</Link>
 </div>
 
 
