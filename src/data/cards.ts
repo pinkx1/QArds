@@ -29,5 +29,4 @@ export const qaCards: Card[] = [
     tag: 'frontend',
     status: 'learning'
   }
-  // и так далее...
 ];

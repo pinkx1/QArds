@@ -1,14 +1,16 @@
 import React from 'react'
 import { Card } from '../types'
 import { CheckIcon, XIcon } from 'lucide-react'
+import { t } from '../i18n'
 
 interface FlashcardProps {
   card: Card
   showAnswer: boolean
   onToggle: () => void
   onAction: (action: 'known' | 'needs-review') => void
-  language: string
+  language: 'en' | 'ru'
 }
+
 
 export function Flashcard({
   card,
@@ -32,8 +34,8 @@ export function Flashcard({
           </div>
           <div className="mt-4 text-sm text-gray-500">
             {showAnswer
-              ? 'Нажмите, чтобы увидеть вопрос'
-              : 'Нажмите, чтобы увидеть ответ'}
+              ? t(language, 'clickToSeeQuestion')
+              : t(language, 'clickToSeeAnswer')}
           </div>
         </div>
       </div>
@@ -43,14 +45,14 @@ export function Flashcard({
         <div className="flex gap-4 justify-center">
           <button
             onClick={() => onAction('needs-review')}
-            title="Нужно подучить"
+            title={t(language, 'needsReview')}
             className="flex items-center justify-center w-14 h-14 bg-red-100 hover:bg-red-200 text-red-600 rounded-full transition-colors shadow-md hover:shadow-lg"
           >
             <XIcon className="w-6 h-6" />
           </button>
           <button
             onClick={() => onAction('known')}
-            title="Знаю"
+            title={t(language, 'known')}
             className="flex items-center justify-center w-14 h-14 bg-green-100 hover:bg-green-200 text-green-600 rounded-full transition-colors shadow-md hover:shadow-lg"
           >
             <CheckIcon className="w-6 h-6" />
