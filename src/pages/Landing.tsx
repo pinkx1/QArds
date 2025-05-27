@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { AppState } from '../types'
 import './Landing.css'
+import { LoginModal } from '../components/LoginModal'
+import { RegisterModal } from '../components/RegisterModal'
 
 interface LandingProps {
   appState: AppState
@@ -10,9 +12,12 @@ interface LandingProps {
 }
 
 export function Landing({ appState, setAppState }: LandingProps) {
+  const [loginOpen, setLoginOpen] = useState(false)
+  const [registerOpen, setRegisterOpen] = useState(false)
+
   return (
     <div className="landing-page">
-      <Header />
+      <Header onLogin={() => setLoginOpen(true)} />
 
       <main className="landing-main container">
         <section className="hero">
@@ -45,6 +50,19 @@ export function Landing({ appState, setAppState }: LandingProps) {
       </main>
 
       <Footer appState={appState} setAppState={setAppState} />
+
+      <LoginModal
+        isOpen={loginOpen}
+        onClose={() => setLoginOpen(false)}
+        setRegisterOpen={() => setRegisterOpen(true)}
+        language={appState.language}
+      />
+
+      <RegisterModal
+        isOpen={registerOpen}
+        onClose={() => setRegisterOpen(false)}
+        language={appState.language}
+      />
     </div>
   )
 }

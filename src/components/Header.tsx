@@ -4,7 +4,7 @@ import logo from '../assets/logo.png'
 
 import './Header.css'
 
-export function Header() {
+export function Header({ onLogin }: { onLogin: () => void }) {
   return (
     <header className="header">
   <div className="container header-inner">
@@ -13,7 +13,9 @@ export function Header() {
     </Link>
 
     <div className="header-right">
-      <button className="login-button">Log in</button>
+        <button className="login-button" onClick={onLogin}>
+    Log in
+  </button>
     </div>
   </div>
 </header>

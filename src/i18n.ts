@@ -23,6 +23,14 @@ export const translations = {
 	answer: 'Answer',
 	category: 'Category',
 	status: 'Status',
+  login: 'Log in',
+logIn: 'Log in',
+password: 'Password',
+register: 'Register',
+confirmPassword: 'Confirm password',
+passwordsDontMatch: 'Passwords do not match',
+noAccount: "Don't have an account?",
+
 
   },
   ru: {
@@ -49,6 +57,14 @@ export const translations = {
 	answer: 'Ответ',
 	category: 'Категория',
 	status: 'Статус',
+  login: 'Вход',
+logIn: 'Войти',
+password: 'Пароль',
+register: 'Регистрация',
+confirmPassword: 'Подтвердите пароль',
+passwordsDontMatch: 'Пароли не совпадают',
+noAccount: "Нет аккаунта?",
+
   }
 }
 
