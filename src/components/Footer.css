@@ -1,0 +1,51 @@
+.footer {
+	background: #fff;
+	border-top: 1px solid #e5e7eb;
+	padding: 1rem;
+}
+
+.footer-content {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.75rem;
+}
+
+.lang-button {
+	padding: 0.5rem 0.75rem;
+	font-size: 0.875rem;
+	color: #4b5563;
+	background: none;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.lang-button:hover {
+	background: #f3f4f6;
+	color: #111827;
+}
+
+.reset-button {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	font-size: 0.875rem;
+	color: #4b5563;
+	background: none;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.reset-button:hover {
+	background: #fef2f2;
+	color: #dc2626;
+}
+
+.icon {
+	width: 18px;
+	height: 18px;
+}

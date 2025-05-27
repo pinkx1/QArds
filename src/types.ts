@@ -1,11 +1,9 @@
-// types.ts
-
 export interface Card {
   id: number
-  question: Record<string, string> // { en: string, ru: string }
+  question: Record<string, string>
   answer: Record<string, string>
   category: string
-  tag: string // например: 'frontend', 'sql', 'network'
+  tag: string
   status: 'known' | 'learning' | 'needs-review'
 }
 

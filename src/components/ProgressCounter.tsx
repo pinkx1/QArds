@@ -3,6 +3,7 @@ import { Card } from '../types'
 import { Link } from 'react-router-dom'
 import { ListIcon } from 'lucide-react'
 import { t } from '../i18n'
+import './ProgressCounter.css'
 
 interface ProgressCounterProps {
   cards: Card[]
@@ -15,31 +16,29 @@ export function ProgressCounter({ cards, language }: ProgressCounterProps) {
   const reviewCount = cards.filter(card => card.status === 'needs-review').length
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
-      <div className="flex items-center justify-between">
-        <div className="flex gap-6">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-green-600">{knownCount}</div>
-            <div className="text-sm text-gray-600">{t(language, 'studied')}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600">{learningCount}</div>
-            <div className="text-sm text-gray-600">{t(language, 'learning')}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-red-600">{reviewCount}</div>
-            <div className="text-sm text-gray-600">{t(language, 'review')}</div>
-          </div>
+    <div className="progress">
+      <div className="progress-section">
+        <div className="progress-item green">
+          <div className="count">{knownCount}</div>
+          <div className="label">{t(language, 'studied')}</div>
         </div>
-        <Link
-          to="/cards"
-          className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
-          title={t(language, 'allCards')}
-        >
-          <ListIcon className="w-5 h-5" />
-          <span className="hidden sm:inline">{t(language, 'allCards')}</span>
-        </Link>
+        <div className="progress-item blue">
+          <div className="count">{learningCount}</div>
+          <div className="label">{t(language, 'learning')}</div>
+        </div>
+        <div className="progress-item red">
+          <div className="count">{reviewCount}</div>
+          <div className="label">{t(language, 'review')}</div>
+        </div>
       </div>
+      <Link
+        to="/cards"
+        className="view-all-link"
+        title={t(language, 'allCards')}
+      >
+        <ListIcon className="icon" />
+        <span>{t(language, 'allCards')}</span>
+      </Link>
     </div>
   )
 }
