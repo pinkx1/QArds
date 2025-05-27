@@ -5,9 +5,18 @@
 	background: #f9fafb;
 }
 
+.dark .cards-page {
+	background: #1f2937;
+}
+
 .cards-header {
 	background: #fff;
 	border-bottom: 1px solid #e5e7eb;
+}
+
+.dark .cards-header {
+	background: #111827;
+	border-bottom: 1px solid #374151;
 }
 
 .cards-header-inner {
@@ -56,10 +65,18 @@
 	background: #f3f4f6;
 }
 
+.dark .back-button {
+	color: #e5e7eb;
+}
+
 .cards-title {
 	font-size: 1.5rem;
 	font-weight: bold;
 	color: #111827;
+}
+
+.dark .cards-title {
+	color: #f3f4f6;
 }
 
 .filter-buttons {
@@ -90,6 +107,23 @@
 	border-color: #bfdbfe;
 }
 
+.dark .filter-button {
+	background: #374151;
+	color: #e5e7eb;
+	border-color: #4b5563;
+}
+
+.dark .filter-button:hover {
+	background: #4b5563;
+	color: #ffffff;
+}
+
+.dark .filter-button.active {
+	background: #3b82f6;
+	color: #ffffff;
+	border-color: #60a5fa;
+}
+
 .cards-table-wrapper {
 	background: #fff;
 	border: 1px solid #e5e7eb;
@@ -98,11 +132,23 @@
 	width: 100%;
 }
 
+.dark .cards-table-wrapper {
+	background: #2a2f3a;
+	border-color: #4b5563;
+}
 
 .cards-table {
 	width: 100%;
 	table-layout: fixed;
 	word-wrap: break-word;
+}
+
+.cards-table thead {
+	background: #f9fafb;
+}
+
+.dark .cards-table thead {
+	background: #374151;
 }
 
 .cards-table th,
@@ -111,10 +157,12 @@
 	font-size: 0.875rem;
 	text-align: left;
 	vertical-align: top;
+	color: #111827;
 }
 
-.cards-table thead {
-	background: #f9fafb;
+.dark .cards-table th,
+.dark .cards-table td {
+	color: #f3f4f6;
 }
 
 .status-cell {
@@ -145,6 +193,10 @@
 	text-align: center;
 	color: #6b7280;
 	font-size: 0.875rem;
+}
+
+.dark .empty-message {
+	color: #9ca3af;
 }
 
 .logo-light {
