@@ -6,6 +6,27 @@
 .cards-header {
 	background: #fff;
 	border-bottom: 1px solid #e5e7eb;
+}
+
+.cards-header-inner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+}
+
+.app-logo {
+	height: 60px;
+	object-fit: contain;
+}
+
+.cards-main {
+	padding: 1rem;
+}
+
+.container {
+	max-width: 1000px;
+	margin: 0 auto;
 	padding: 1rem;
 }
 
@@ -13,7 +34,7 @@
 	display: flex;
 	gap: 1rem;
 	align-items: center;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 }
 
 .back-button {
@@ -42,6 +63,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5rem;
+	margin-bottom: 1.5rem;
 }
 
 .filter-button {
@@ -52,6 +74,7 @@
 	border: 1px solid #d1d5db;
 	border-radius: 8px;
 	cursor: pointer;
+	transition: background 0.2s, color 0.2s;
 }
 
 .filter-button:hover {
@@ -64,20 +87,19 @@
 	border-color: #bfdbfe;
 }
 
-.cards-main {
-	padding: 1rem;
-}
-
 .cards-table-wrapper {
 	background: #fff;
 	border: 1px solid #e5e7eb;
 	border-radius: 16px;
 	overflow-x: auto;
+	width: 100%;
 }
+
 
 .cards-table {
 	width: 100%;
-	border-collapse: collapse;
+	table-layout: fixed;
+	word-wrap: break-word;
 }
 
 .cards-table th,
@@ -120,4 +142,20 @@
 	text-align: center;
 	color: #6b7280;
 	font-size: 0.875rem;
+}
+
+.logo-light {
+	display: block;
+}
+
+.logo-dark {
+	display: none;
+}
+
+.dark .logo-light {
+	display: none;
+}
+
+.dark .logo-dark {
+	display: block;
 }

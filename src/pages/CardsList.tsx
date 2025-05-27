@@ -4,6 +4,9 @@ import { AppState } from '../types'
 import { ArrowLeftIcon, CheckIcon, XIcon, BookOpenIcon } from 'lucide-react'
 import { t, translations } from '../i18n'
 import './CardsList.css'
+import logoLight from '../assets/logo-light.png'
+import logoDark from '../assets/logo-dark.png'
+
 
 interface CardsListProps {
   appState: AppState
@@ -47,6 +50,15 @@ export function CardsList({ appState }: CardsListProps) {
   return (
     <div className="cards-page">
       <header className="cards-header">
+        <div className="cards-header-inner">
+  <img src={logoLight} alt="QArds logo" className="app-logo logo-light" />
+  <img src={logoDark} alt="QArds logo" className="app-logo logo-dark" />
+</div>
+
+
+      </header>
+
+      <main className="cards-main">
         <div className="container">
           <div className="cards-header-top">
             <Link to="/" className="back-button">
@@ -70,11 +82,7 @@ export function CardsList({ appState }: CardsListProps) {
               )
             })}
           </div>
-        </div>
-      </header>
 
-      <main className="cards-main">
-        <div className="container">
           <div className="cards-table-wrapper">
             <table className="cards-table">
               <thead>
