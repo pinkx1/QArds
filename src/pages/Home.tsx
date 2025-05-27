@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Flashcard } from '../components/Flashcard'
 import { ProgressCounter } from '../components/ProgressCounter'
 import { Footer } from '../components/Footer'
@@ -19,18 +19,27 @@ export function Home({ appState, setAppState }: HomeProps) {
     selectedCategory,
     language,
     showAnswer,
+    shuffleMode,
   } = appState
 
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [visibleCards, setVisibleCards] = useState<Card[]>([])
 
-  // Отфильтрованные карточки (по категории и статусу)
-  const visibleCards = useMemo(() => {
-    return cards.filter(
+  // Обновляем список карточек при изменении условий
+  useEffect(() => {
+    let filtered = cards.filter(
       (card) =>
         card.status !== 'known' &&
         (selectedCategory === 'all' || card.category === selectedCategory)
     )
-  }, [cards, selectedCategory])
+
+    if (shuffleMode) {
+      filtered = [...filtered].sort(() => Math.random() - 0.5)
+    }
+
+    setVisibleCards(filtered)
+    setCurrentIndex(0)
+  }, [cards, selectedCategory, shuffleMode])
 
   const currentCard = visibleCards[currentIndex] || null
 
@@ -39,10 +48,6 @@ export function Home({ appState, setAppState }: HomeProps) {
   useEffect(() => {
     localStorage.setItem('qards-state', JSON.stringify(appState))
   }, [appState])
-
-  useEffect(() => {
-    setCurrentIndex(0)
-  }, [selectedCategory, cards])
 
   const handleCardAction = (action: 'known' | 'needs-review') => {
     if (!currentCard) return
@@ -56,14 +61,11 @@ export function Home({ appState, setAppState }: HomeProps) {
       cards: updatedCards,
       showAnswer: false,
     }))
-
-    if (visibleCards.length > 1) {
-      setCurrentIndex((prev) => (prev + 1) % visibleCards.length)
-    }
   }
 
   const handleNavigation = (direction: 'prev' | 'next') => {
     setCurrentIndex((prev) => {
+      if (visibleCards.length === 0) return 0
       if (direction === 'next') {
         return (prev + 1) % visibleCards.length
       } else {
@@ -75,12 +77,11 @@ export function Home({ appState, setAppState }: HomeProps) {
   }
 
   const toggleShuffle = () => {
-    // Пока не реализуем — добавим позже
-    alert(
-      language === 'ru'
-        ? 'Перемешивание временно отключено. Мы это исправим!'
-        : 'Shuffle is temporarily disabled. We’ll fix it soon!'
-    )
+    setAppState((prev) => ({
+      ...prev,
+      shuffleMode: !prev.shuffleMode,
+      showAnswer: false,
+    }))
   }
 
   const handleCategoryChange = (category: string) => {
@@ -89,7 +90,6 @@ export function Home({ appState, setAppState }: HomeProps) {
       selectedCategory: category,
       showAnswer: false,
     }))
-    setCurrentIndex(0)
   }
 
   return (
@@ -105,7 +105,7 @@ export function Home({ appState, setAppState }: HomeProps) {
           <ProgressCounter
             cards={cards}
             language={language}
-            shuffleMode={false} // пока отключено
+            shuffleMode={shuffleMode}
             selectedCategory={selectedCategory}
             categories={categories}
             onShuffleToggle={toggleShuffle}
@@ -121,7 +121,7 @@ export function Home({ appState, setAppState }: HomeProps) {
                   : '🎉 You’ve learned all the cards in this category.\nBe proud — great job!'}
               </p>
             </div>
-          ) : (
+          ) : currentCard ? (
             <Flashcard
               card={currentCard}
               showAnswer={showAnswer}
@@ -131,7 +131,7 @@ export function Home({ appState, setAppState }: HomeProps) {
               onAction={handleCardAction}
               language={language}
             />
-          )}
+          ) : null}
         </div>
       </main>
 
