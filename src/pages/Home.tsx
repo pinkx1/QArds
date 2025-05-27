@@ -8,6 +8,7 @@ import { ChevronLeftIcon, ChevronRightIcon, ShuffleIcon, FilterIcon } from 'luci
 import { t } from '../i18n'
 import './Home.css'
 import logo from '../assets/logo.png'
+import congratsImage from '../assets/congrats.png'
 
 
 interface HomeProps {
@@ -24,9 +25,14 @@ export function Home({ appState, setAppState }: HomeProps) {
     language
   } = appState
 
-  const filteredCards = selectedCategory === 'all'
-    ? cards
-    : cards.filter(card => card.category === selectedCategory)
+  const filteredCards = cards.filter(card =>
+  card.status !== 'known' &&
+  (selectedCategory === 'all' || card.category === selectedCategory)
+)
+const visibleCards = cards.filter(card =>
+  card.status !== 'known' &&
+  (selectedCategory === 'all' || card.category === selectedCategory)
+)
 
   const currentCard = filteredCards[currentCardIndex] || filteredCards[0]
   const categories = ['all', ...Array.from(new Set(cards.map(card => card.category)))]
@@ -90,7 +96,7 @@ export function Home({ appState, setAppState }: HomeProps) {
       <main className="home-main">
         <div className="container">
           <ProgressCounter
-            cards={filteredCards}
+            cards={cards} 
             language={language}
             shuffleMode={shuffleMode}
             selectedCategory={selectedCategory}
@@ -100,17 +106,28 @@ export function Home({ appState, setAppState }: HomeProps) {
           />
 
 
-          {currentCard && (
-            <Flashcard
-              card={currentCard}
-              showAnswer={appState.showAnswer}
-              onToggle={() =>
-                setAppState(prev => ({ ...prev, showAnswer: !prev.showAnswer }))
-              }
-              onAction={handleCardAction}
-              language={language}
-            />
-          )}
+          {visibleCards.length === 0 ? (
+  <div className="congrats-card">
+  <img src={congratsImage} alt="All done" className="congrats-img" />
+  <p className="congrats-text">
+    {language === 'ru'
+      ? '🎉 Ура! Вы выучили все карточки в этой категории.\nМожно гордиться собой — отличная работа!'
+      : '🎉 You’ve learned all the cards in this category.\nBe proud — great job!'}
+  </p>
+</div>
+
+) : (
+  <Flashcard
+    card={currentCard}
+    showAnswer={appState.showAnswer}
+    onToggle={() =>
+      setAppState(prev => ({ ...prev, showAnswer: !prev.showAnswer }))
+    }
+    onAction={handleCardAction}
+    language={language}
+  />
+)}
+
         </div>
       </main>
 
