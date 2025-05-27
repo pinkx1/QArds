@@ -4,10 +4,8 @@ import { AppState } from '../types'
 import { ArrowLeftIcon, CheckIcon, XIcon, BookOpenIcon } from 'lucide-react'
 import { t, translations } from '../i18n'
 import './CardsList.css'
-import logoLight from '../assets/logo-light.png'
-import logoDark from '../assets/logo-dark.png'
 import { Header } from '../components/Header'
-
+import { Footer } from '../components/Footer'
 
 interface CardsListProps {
   appState: AppState
@@ -21,7 +19,7 @@ const labelKeyMap: Record<'all' | 'learning' | 'known' | 'needs-review', keyof t
   'needs-review': 'review'
 }
 
-export function CardsList({ appState }: CardsListProps) {
+export function CardsList({ appState, setAppState }: CardsListProps) {
   const [statusFilter, setStatusFilter] = useState<'all' | 'known' | 'learning' | 'needs-review'>('all')
   const { cards, language } = appState
 
@@ -51,7 +49,6 @@ export function CardsList({ appState }: CardsListProps) {
   return (
     <div className="cards-page">
       <Header />
-
 
       <main className="cards-main">
         <div className="container">
@@ -108,6 +105,8 @@ export function CardsList({ appState }: CardsListProps) {
           </div>
         </div>
       </main>
+
+      <Footer appState={appState} setAppState={setAppState} />
     </div>
   )
 }

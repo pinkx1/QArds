@@ -1,6 +1,8 @@
 .cards-page {
-	background: #f9fafb;
+	display: flex;
+	flex-direction: column;
 	min-height: 100vh;
+	background: #f9fafb;
 }
 
 .cards-header {
@@ -21,6 +23,7 @@
 }
 
 .cards-main {
+	flex: 1;
 	padding: 1rem;
 }
 
