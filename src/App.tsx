@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { CardsList } from './pages/CardsList'
@@ -23,6 +23,9 @@ export function App() {
     saved ? JSON.parse(saved) : defaultState
   )
 
+  // Храним оригинальный порядок карточек
+  const originalCardsRef = useRef<Card[]>(qaCards)
+
   useEffect(() => {
     localStorage.setItem('qards-state', JSON.stringify(appState))
   }, [appState])
@@ -31,8 +34,20 @@ export function App() {
     <div className="min-h-screen bg-gray-50 w-full">
       <Router>
         <Routes>
-          <Route path="/" element={<Home appState={appState} setAppState={setAppState} />} />
-          <Route path="/cards" element={<CardsList appState={appState} setAppState={setAppState} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                appState={appState}
+                setAppState={setAppState}
+                originalCards={originalCardsRef.current}
+              />
+            }
+          />
+          <Route
+            path="/cards"
+            element={<CardsList appState={appState} setAppState={setAppState} />}
+          />
         </Routes>
       </Router>
     </div>
