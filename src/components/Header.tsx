@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logoLight from '../assets/logo-light.png'
-import logoDark from '../assets/logo-dark.png'
+import logo from '../assets/logo.png'
+
 import './Header.css'
 
 export function Header() {
@@ -9,8 +9,7 @@ export function Header() {
     <header className="header">
       <div className="container header-inner">
         <Link to="/" className="logo-link" title="Go to homepage">
-          <img src={logoLight} alt="QArds logo" className="app-logo logo-light" />
-          <img src={logoDark} alt="QArds logo" className="app-logo logo-dark" />
+			<img src={logo} alt="QAhead logo" className="app-logo" />
         </Link>
       </div>
     </header>

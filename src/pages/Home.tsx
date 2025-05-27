@@ -26,7 +26,6 @@ export function Home({ appState, setAppState }: HomeProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [visibleCards, setVisibleCards] = useState<Card[]>([])
 
-  // Обновляем список карточек при изменении условий
   useEffect(() => {
     let filtered = cards.filter(
       (card) =>
@@ -96,7 +95,6 @@ export function Home({ appState, setAppState }: HomeProps) {
   return (
     <div className="home">
       <Header />
-
       <main className="home-main">
         <div className="container">
           <ProgressCounter

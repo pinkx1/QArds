@@ -25,12 +25,9 @@
 .app-logo {
 	height: 60px;
 	object-fit: contain;
-	content: url('../assets/logo-light.png');
 }
 
-body.dark .app-logo {
-	content: url('../assets/logo-dark.png');
-}
+
 
 .app-title {
 	text-align: center;
