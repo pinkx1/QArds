@@ -1,16 +1,29 @@
 import React from 'react'
 import { Card } from '../types'
 import { Link } from 'react-router-dom'
-import { ListIcon } from 'lucide-react'
+import { ListIcon, ShuffleIcon } from 'lucide-react'
 import { t } from '../i18n'
 import './ProgressCounter.css'
 
 interface ProgressCounterProps {
   cards: Card[]
   language: 'en' | 'ru'
+  shuffleMode: boolean
+  selectedCategory: string
+  categories: string[]
+  onShuffleToggle: () => void
+  onCategoryChange: (category: string) => void
 }
 
-export function ProgressCounter({ cards, language }: ProgressCounterProps) {
+export function ProgressCounter({
+  cards,
+  language,
+  shuffleMode,
+  selectedCategory,
+  categories,
+  onShuffleToggle,
+  onCategoryChange
+}: ProgressCounterProps) {
   const knownCount = cards.filter(card => card.status === 'known').length
   const learningCount = cards.filter(card => card.status === 'learning').length
   const reviewCount = cards.filter(card => card.status === 'needs-review').length
@@ -31,14 +44,38 @@ export function ProgressCounter({ cards, language }: ProgressCounterProps) {
           <div className="label">{t(language, 'review')}</div>
         </div>
       </div>
-      <Link
-        to="/cards"
-        className="view-all-link"
-        title={t(language, 'allCards')}
-      >
-        <ListIcon className="icon" />
-        <span>{t(language, 'allCards')}</span>
-      </Link>
+
+      <div className="progress-actions">
+        <div className="category-select">
+          <select
+            value={selectedCategory}
+            onChange={e => onCategoryChange(e.target.value)}
+          >
+            {categories.map(category => (
+              <option key={category} value={category}>
+                {category === 'all' ? t(language, 'allCategories') : category}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <button
+          onClick={onShuffleToggle}
+          className={`shuffle-btn ${shuffleMode ? 'active' : ''}`}
+        >
+          <ShuffleIcon className="icon" />
+          {t(language, 'shuffleMode')}
+        </button>
+
+        <Link
+          to="/cards"
+          className="view-all-link"
+          title={t(language, 'allCards')}
+        >
+          <ListIcon className="icon" />
+          <span>{t(language, 'allCards')}</span>
+        </Link>
+      </div>
     </div>
   )
 }

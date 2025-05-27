@@ -84,3 +84,8 @@
 	width: 20px;
 	height: 20px;
 }
+
+.app-logo {
+	height: 60px;
+	object-fit: contain;
+}

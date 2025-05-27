@@ -1,15 +1,18 @@
 .flashcard-wrapper {
-	max-width: 640px;
+	max-width: 1000px;
+	/* шире */
 	margin: 0 auto;
 }
 
 .flashcard {
 	background: white;
 	border: 1px solid #e5e7eb;
-	border-radius: 16px;
-	padding: 32px;
-	margin-bottom: 24px;
-	min-height: 300px;
+	border-radius: 24px;
+	padding: 64px;
+	/* больше паддинг */
+	margin-bottom: 32px;
+	min-height: 600px;
+	/* выше */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -18,8 +21,8 @@
 }
 
 .flashcard:hover {
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-	transform: translateY(-4px);
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+	transform: translateY(-6px);
 }
 
 .flashcard-content {
@@ -27,39 +30,41 @@
 }
 
 .flashcard-text {
-	font-size: 1.125rem;
+	font-size: 2rem;
+	/* крупнее текст */
 	color: #111827;
-	line-height: 1.6;
+	line-height: 1.8;
 }
 
 .flashcard-hint {
-	margin-top: 1rem;
-	font-size: 0.875rem;
+	margin-top: 2rem;
+	font-size: 1.25rem;
 	color: #6b7280;
 }
 
 .flashcard-actions {
 	display: flex;
 	justify-content: center;
-	gap: 16px;
+	gap: 24px;
+	margin-top: 32px;
 }
 
 .action-btn {
-	width: 56px;
-	height: 56px;
+	width: 72px;
+	height: 72px;
 	border-radius: 50%;
 	border: none;
-	font-size: 1rem;
+	font-size: 1.25rem;
 	cursor: pointer;
 	transition: all 0.2s ease;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
 }
 
 .action-btn:hover {
-	transform: scale(1.05);
+	transform: scale(1.08);
 }
 
 .action-btn.red {
@@ -73,6 +78,6 @@
 }
 
 .icon {
-	width: 24px;
-	height: 24px;
+	width: 32px;
+	height: 32px;
 }

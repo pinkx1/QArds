@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { Flashcard } from '../components/Flashcard'
 import { ProgressCounter } from '../components/ProgressCounter'
 import { Footer } from '../components/Footer'
@@ -6,6 +7,8 @@ import { AppState } from '../types'
 import { ChevronLeftIcon, ChevronRightIcon, ShuffleIcon, FilterIcon } from 'lucide-react'
 import { t } from '../i18n'
 import './Home.css'
+import logo from '../assets/logo.png'
+
 
 interface HomeProps {
   appState: AppState
@@ -27,6 +30,10 @@ export function Home({ appState, setAppState }: HomeProps) {
 
   const currentCard = filteredCards[currentCardIndex] || filteredCards[0]
   const categories = ['all', ...Array.from(new Set(cards.map(card => card.category)))]
+  
+  useEffect(() => {
+    localStorage.setItem('qards-state', JSON.stringify(appState))
+  }, [appState])
 
   const handleCardAction = (action: 'known' | 'needs-review') => {
     if (!currentCard) return
@@ -76,37 +83,22 @@ export function Home({ appState, setAppState }: HomeProps) {
     <div className="home">
       <header className="home-header">
         <div className="container">
-          <h1 className="app-title">{t(language, 'qards')}</h1>
-
-          <div className="controls">
-            <div className="category-select">
-              <FilterIcon className="icon" />
-              <select
-                value={selectedCategory}
-                onChange={e => handleCategoryChange(e.target.value)}
-              >
-                {categories.map(category => (
-                  <option key={category} value={category}>
-                    {category === 'all' ? t(language, 'allCategories') : category}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <button
-              onClick={toggleShuffle}
-              className={`shuffle-btn ${shuffleMode ? 'active' : ''}`}
-            >
-              <ShuffleIcon className="icon" />
-              {t(language, 'shuffleMode')}
-            </button>
-          </div>
+          <img src={logo} alt="QArds logo" className="app-logo" />
         </div>
       </header>
 
       <main className="home-main">
         <div className="container">
-          <ProgressCounter cards={filteredCards} language={language} />
+          <ProgressCounter
+            cards={filteredCards}
+            language={language}
+            shuffleMode={shuffleMode}
+            selectedCategory={selectedCategory}
+            categories={categories}
+            onShuffleToggle={toggleShuffle}
+            onCategoryChange={handleCategoryChange}
+          />
+
 
           <div className="navigation">
             <button

@@ -1,4 +1,6 @@
 .progress {
+	max-width: 1000px;
+	margin: 0 auto;
 	background: #fff;
 	border: 1px solid #e5e7eb;
 	border-radius: 16px;
@@ -10,6 +12,7 @@
 	flex-wrap: wrap;
 	gap: 1rem;
 }
+
 
 .progress-section {
 	display: flex;
@@ -43,6 +46,55 @@
 	color: #dc2626;
 }
 
+.progress-actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+/* Стили для кнопки перемешивания */
+.shuffle-btn {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1rem;
+	font-size: 0.875rem;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	background-color: #fff;
+	color: #4b5563;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s;
+}
+
+.shuffle-btn:hover {
+	background-color: #f3f4f6;
+	color: #111827;
+}
+
+.shuffle-btn.active {
+	background-color: #eef6ff;
+	border-color: #90caf9;
+	color: #1e3a8a;
+}
+
+/* Стили для селекта */
+.category-select select {
+	padding: 0.5rem 1rem;
+	font-size: 0.875rem;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	background-color: #fff;
+	color: #4b5563;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s;
+}
+
+.category-select select:hover {
+	background-color: #f3f4f6;
+	color: #111827;
+}
+
 .view-all-link {
 	display: flex;
 	align-items: center;
@@ -53,6 +105,8 @@
 	transition: color 0.2s, background 0.2s;
 	padding: 0.5rem 1rem;
 	border-radius: 8px;
+	border: 1px solid #e5e7eb;
+	background-color: #fff;
 }
 
 .view-all-link:hover {
