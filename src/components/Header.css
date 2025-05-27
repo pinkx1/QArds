@@ -3,14 +3,9 @@
 	border-bottom: 1px solid #e5e7eb;
 }
 
-.dark .header {
-	background: #111827;
-	border-bottom: 1px solid #374151;
-}
-
 .header-inner {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	padding: 1rem;
 }
@@ -18,7 +13,6 @@
 .logo-link {
 	display: flex;
 	align-items: center;
-	justify-content: center;
 }
 
 .app-logo {
@@ -27,20 +21,35 @@
 }
 
 .header-right {
-	margin-left: auto;
+	display: flex;
+	gap: 1rem;
 }
 
 .login-button {
-	padding: 0.5rem 1rem;
+	padding: 0.625rem 1.25rem;
 	font-size: 0.875rem;
-	border-radius: 8px;
+	font-weight: 600;
+	color: white;
+	background: linear-gradient(to right, #3b82f6, #60a5fa);
 	border: none;
-	background: #ef4444;
-	color: #fff;
+	border-radius: 8px;
 	cursor: pointer;
-	transition: background 0.2s;
+	transition: box-shadow 0.2s ease, transform 0.1s ease;
+	box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
 }
 
 .login-button:hover {
-	background: #dc2626;
+	box-shadow: 0 4px 6px rgba(59, 130, 246, 0.4);
+	transform: translateY(-1px);
+}
+
+.login-button:active {
+	transform: translateY(0);
+}
+
+.dark .header {
+	background: #1f2937;
+	/* тёмный фон */
+	border-color: #374151;
+	/* тёмная граница */
 }

@@ -7,15 +7,16 @@ import './Header.css'
 export function Header() {
   return (
     <header className="header">
-      <div className="container header-inner">
-        <Link to="/" className="logo-link" title="Go to homepage">
-			<img src={logo} alt="QAhead logo" className="app-logo" />
-        </Link>
-      </div>
-      <div className="header-right">
-  <button className="login-button">Log in</button>
-</div>
+  <div className="container header-inner">
+    <Link to="/" className="logo-link">
+      <img src={logo} alt="QAhead logo" className="app-logo" />
+    </Link>
 
-    </header>
+    <div className="header-right">
+      <button className="login-button">Log in</button>
+    </div>
+  </div>
+</header>
+
   )
 }
