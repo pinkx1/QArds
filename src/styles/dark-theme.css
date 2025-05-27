@@ -1,0 +1,87 @@
+/* === Базовый фон и текст === */
+body.dark {
+	background-color: #111827;
+	color: #f3f4f6;
+}
+
+/* Основные контейнеры */
+body.dark .home {
+	background-color: #111827;
+	color: #f3f4f6;
+}
+
+body.dark .progress,
+body.dark .flashcard,
+body.dark .footer {
+	background-color: #1f2937;
+	color: #f9fafb;
+	border-color: #374151;
+}
+
+/* Прогресс */
+body.dark .progress-item .label {
+	color: #9ca3af;
+}
+
+body.dark .button-like,
+body.dark .category-dropdown,
+body.dark .shuffle-btn,
+body.dark .view-all-link {
+	background-color: #1f2937;
+	color: #e5e7eb;
+	border-color: #374151;
+}
+
+body.dark .button-like:hover,
+body.dark .shuffle-btn:hover,
+body.dark .category-dropdown:hover,
+body.dark .view-all-link:hover {
+	background-color: #374151;
+	color: #f9fafb;
+}
+
+/* Flashcard */
+body.dark .flashcard-text {
+	color: #e5e7eb;
+}
+
+body.dark .flashcard-hint {
+	color: #9ca3af;
+}
+
+body.dark .action-btn.red {
+	background-color: #7f1d1d;
+	color: #fecaca;
+}
+
+body.dark .action-btn.green {
+	background-color: #064e3b;
+	color: #bbf7d0;
+}
+
+body.dark .action-btn:hover {
+	transform: scale(1.05);
+}
+
+/* Footer */
+body.dark .footer {
+	background-color: #1f2937;
+	border-top-color: #374151;
+}
+
+body.dark .lang-button,
+body.dark .theme-button,
+body.dark .reset-button {
+	color: #d1d5db;
+}
+
+body.dark .lang-button:hover,
+body.dark .theme-button:hover {
+	background-color: #374151;
+	color: #f9fafb;
+}
+
+body.dark .reset-button:hover {
+	background-color: #7f1d1d;
+	color: #fef2f2;
+}

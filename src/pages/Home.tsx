@@ -83,7 +83,7 @@ export function Home({ appState, setAppState }: HomeProps) {
     <div className="home">
       <header className="home-header">
         <div className="container">
-          <img src={logo} alt="QArds logo" className="app-logo" />
+          <img alt="QArds logo" className="app-logo" />
         </div>
       </header>
 

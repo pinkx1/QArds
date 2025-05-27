@@ -25,6 +25,11 @@
 .app-logo {
 	height: 60px;
 	object-fit: contain;
+	content: url('../assets/logo-light.png');
+}
+
+body.dark .app-logo {
+	content: url('../assets/logo-dark.png');
 }
 
 .app-title {
@@ -64,31 +69,12 @@
 	height: 20px;
 }
 
-/* Статусные кнопки под карточкой */
-.action-btn {
-	width: 56px;
-	height: 56px;
-	border-radius: 50%;
-	border: none;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: all 0.2s ease;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+/* 🌙 Тёмная тема для хедера */
+body.dark .home-header {
+	background-color: #1f2937;
+	border-bottom: 1px solid #374151;
 }
 
-.action-btn:hover {
-	transform: scale(1.05);
-}
-
-.action-btn.red {
-	background: #fee2e2;
-	color: #b91c1c;
-}
-
-.action-btn.green {
-	background: #d1fae5;
-	color: #065f46;
+body.dark .app-logo {
+	filter: brightness(1.2) contrast(1.1);
 }

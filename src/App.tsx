@@ -4,6 +4,7 @@ import { Home } from './pages/Home'
 import { CardsList } from './pages/CardsList'
 import { Card, AppState } from './types'
 import { qaCards } from './data/cards'
+import './styles/dark-theme.css'
 
 export function App() {
   const browserLang = navigator.language.startsWith('ru') ? 'ru' : 'en'

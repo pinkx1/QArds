@@ -6,8 +6,15 @@
 
 .footer-content {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
+	align-items: center;
 	gap: 0.75rem;
+}
+
+.footer-left {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 .lang-button {
@@ -24,6 +31,22 @@
 .lang-button:hover {
 	background: #f3f4f6;
 	color: #111827;
+}
+
+.theme-button {
+	background: none;
+	border: 1px solid #d1d5db;
+	border-radius: 8px;
+	padding: 0.5rem;
+	cursor: pointer;
+	transition: background 0.2s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.theme-button:hover {
+	background-color: #f3f4f6;
 }
 
 .reset-button {
@@ -48,4 +71,32 @@
 .icon {
 	width: 18px;
 	height: 18px;
+}
+
+/* 🌙 Темная тема */
+body.dark {
+	background-color: #111827;
+	color: #f3f4f6;
+}
+
+body.dark .footer {
+	background-color: #1f2937;
+	border-top-color: #374151;
+}
+
+body.dark .lang-button,
+body.dark .theme-button,
+body.dark .reset-button {
+	color: #d1d5db;
+}
+
+body.dark .lang-button:hover,
+body.dark .theme-button:hover {
+	background-color: #374151;
+	color: #f9fafb;
+}
+
+body.dark .reset-button:hover {
+	background-color: #7f1d1d;
+	color: #fef2f2;
 }
