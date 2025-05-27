@@ -9,15 +9,15 @@
 	border: 1px solid #e5e7eb;
 	border-radius: 24px;
 	padding: 64px;
-	/* больше паддинг */
 	margin-bottom: 32px;
 	min-height: 600px;
-	/* выше */
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
 	transition: all 0.3s ease;
+	box-shadow: 0 0 2rem 0 #282e3e1a;
+
 }
 
 .flashcard:hover {
