@@ -1,0 +1,38 @@
+.header {
+	background: #fff;
+	border-bottom: 1px solid #e5e7eb;
+}
+
+.header-inner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+}
+
+.logo-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.app-logo {
+	height: 60px;
+	object-fit: contain;
+}
+
+.logo-light {
+	display: block;
+}
+
+.logo-dark {
+	display: none;
+}
+
+.dark .logo-light {
+	display: none;
+}
+
+.dark .logo-dark {
+	display: block;
+}

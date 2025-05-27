@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Flashcard } from '../components/Flashcard'
 import { ProgressCounter } from '../components/ProgressCounter'
+import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { AppState, Card } from '../types'
 import { t } from '../i18n'
@@ -94,11 +95,7 @@ export function Home({ appState, setAppState }: HomeProps) {
 
   return (
     <div className="home">
-      <header className="home-header">
-        <div className="container">
-          <img alt="QArds logo" className="app-logo" />
-        </div>
-      </header>
+      <Header />
 
       <main className="home-main">
         <div className="container">

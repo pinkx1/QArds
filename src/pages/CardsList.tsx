@@ -6,6 +6,7 @@ import { t, translations } from '../i18n'
 import './CardsList.css'
 import logoLight from '../assets/logo-light.png'
 import logoDark from '../assets/logo-dark.png'
+import { Header } from '../components/Header'
 
 
 interface CardsListProps {
@@ -49,16 +50,8 @@ export function CardsList({ appState }: CardsListProps) {
 
   return (
     <div className="cards-page">
-      <header className="cards-header">
-        <div className="cards-header-inner">
-  <Link to="/" className="logo-link">
-  <img src={logoLight} alt="QArds logo" className="app-logo logo-light" />
-  <img src={logoDark} alt="QArds logo" className="app-logo logo-dark" />
-</Link>
-</div>
+      <Header />
 
-
-      </header>
 
       <main className="cards-main">
         <div className="container">
