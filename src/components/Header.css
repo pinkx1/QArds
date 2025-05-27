@@ -25,3 +25,22 @@
 	height: 60px;
 	object-fit: contain;
 }
+
+.header-right {
+	margin-left: auto;
+}
+
+.login-button {
+	padding: 0.5rem 1rem;
+	font-size: 0.875rem;
+	border-radius: 8px;
+	border: none;
+	background: #ef4444;
+	color: #fff;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.login-button:hover {
+	background: #dc2626;
+}

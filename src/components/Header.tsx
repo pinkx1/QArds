@@ -12,6 +12,10 @@ export function Header() {
 			<img src={logo} alt="QAhead logo" className="app-logo" />
         </Link>
       </div>
+      <div className="header-right">
+  <button className="login-button">Log in</button>
+</div>
+
     </header>
   )
 }

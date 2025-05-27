@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { CardsList } from './pages/CardsList'
+import { Landing } from './pages/Landing'
 import { Card, AppState } from './types'
 import { qaCards } from './data/cards'
 import './styles/dark-theme.css'
@@ -23,7 +24,6 @@ export function App() {
     saved ? JSON.parse(saved) : defaultState
   )
 
-  // Храним оригинальный порядок карточек
   const originalCardsRef = useRef<Card[]>(qaCards)
 
   useEffect(() => {
@@ -37,6 +37,12 @@ export function App() {
           <Route
             path="/"
             element={
+              <Landing appState={appState} setAppState={setAppState} />
+            }
+          />
+          <Route
+            path="/flashcards"
+            element={
               <Home
                 appState={appState}
                 setAppState={setAppState}
@@ -46,7 +52,9 @@ export function App() {
           />
           <Route
             path="/cards"
-            element={<CardsList appState={appState} setAppState={setAppState} />}
+            element={
+              <CardsList appState={appState} setAppState={setAppState} />
+            }
           />
         </Routes>
       </Router>
