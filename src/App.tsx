@@ -24,13 +24,10 @@ export function App() {
 	const [appState, setAppState] = useState<AppState>(saved ? JSON.parse(saved) : defaultState);
 	const originalCardsRef = useRef<Card[]>(qaCards);
 
-	useEffect(() => {
-		localStorage.setItem("qards-state", JSON.stringify(appState));
-	}, [appState]);
-
 	const [userEmail, setUserEmail] = useState<string | null>(null);
 
-	useEffect(() => {
+	// универсальная функция
+	const checkAuth = () => {
 		const token = localStorage.getItem("token");
 		if (token) {
 			try {
@@ -38,8 +35,25 @@ export function App() {
 				setUserEmail(payload.email);
 			} catch {
 				localStorage.removeItem("token");
+				setUserEmail(null);
 			}
+		} else {
+			setUserEmail(null);
 		}
+	};
+
+	useEffect(() => {
+		localStorage.setItem("qards-state", JSON.stringify(appState));
+	}, [appState]);
+
+	// при первом запуске
+	useEffect(() => {
+		checkAuth();
+		// слушаем кастомное событие после логина
+		window.addEventListener("auth-update", checkAuth);
+		return () => {
+			window.removeEventListener("auth-update", checkAuth);
+		};
 	}, []);
 
 	const handleLogout = () => {

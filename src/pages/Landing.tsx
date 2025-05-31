@@ -57,7 +57,7 @@ export function Landing({ appState, setAppState, userEmail, onLogout, setUserEma
 
 			<LoginModal isOpen={loginOpen} onClose={() => setLoginOpen(false)} setRegisterOpen={() => setRegisterOpen(true)} language={appState.language} setUserEmail={setUserEmail} />
 
-			<RegisterModal isOpen={registerOpen} onClose={() => setRegisterOpen(false)} language={appState.language} />
+			<RegisterModal isOpen={registerOpen} onClose={() => setRegisterOpen(false)} language={appState.language} setUserEmail={setUserEmail} />
 		</div>
 	);
 }

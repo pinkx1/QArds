@@ -34,7 +34,8 @@ export function LoginModal({ isOpen, onClose, language, setRegisterOpen, setUser
 			}
 
 			localStorage.setItem("token", data.token);
-			setUserEmail(data.email); // <--- эта строка нужна
+			setUserEmail(data.email); // на случай, если нужно мгновенно
+			window.dispatchEvent(new Event("auth-update")); // 🔄 триггер App.tsx
 			onClose();
 		} catch (err) {
 			alert("Something went wrong. Please try again.");
