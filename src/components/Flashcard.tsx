@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 import { Card } from '../types'
 import { CheckIcon, XIcon } from 'lucide-react'
 import { t } from '../i18n'
@@ -19,15 +20,21 @@ export function Flashcard({
   onAction,
   language
 }: FlashcardProps) {
+  const questionText = card.question[language] ?? card.question.en
+  const answerText = card.answer[language] ?? card.answer.en
+
   return (
     <div className="flashcard-wrapper">
       <div className="flashcard" onClick={onToggle}>
         <div className="flashcard-content">
-          <div className="flashcard-text">
-            {showAnswer
-              ? card.answer[language] ?? card.answer.en
-              : card.question[language] ?? card.question.en}
-          </div>
+          {showAnswer ? (
+            <div className="flashcard-text markdown">
+              <ReactMarkdown>{answerText}</ReactMarkdown>
+            </div>
+          ) : (
+            <div className="flashcard-question">{questionText}</div>
+          )}
+
           <div className="flashcard-hint">
             {showAnswer
               ? t(language, 'clickToSeeQuestion')
